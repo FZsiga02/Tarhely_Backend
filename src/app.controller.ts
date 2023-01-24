@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import db from './db';
+import TarhelyDataDto from './tarhelydata.dto';
 
 @Controller()
 export class AppController {
@@ -23,5 +24,14 @@ export class AppController {
       'SELECT * FROM tarhelycsomagok'
     );
     return { tarhelyek: tarhelyek };
+  }
+
+  @Post('/api/tarhely')
+  async registerTarhely(@Body() tarhelydata: TarhelyDataDto) {
+    await db.execute('INSERT INTO tarhelycsomagok (nev, meret, ar) VALUES (?, ?)', [
+      tarhelydata.nev,
+      tarhelydata.meret,
+      tarhelydata.ar,
+    ]);
   }
 }
