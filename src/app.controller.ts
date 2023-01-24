@@ -34,4 +34,12 @@ export class AppController {
       tarhelydata.ar,
     ]);
   }
+
+  @Delete('/api/tarhely/:id')
+  async deleteTarhely(@Param('id') id: number) {
+    await db.execute(
+      'DELETE FROM tarhelycsomagok WHERE id = ?',
+      [id],
+    );
+  }
 }
