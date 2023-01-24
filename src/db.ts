@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import * as mysql from 'mysql2';
 
 export default mysql
@@ -5,6 +6,6 @@ export default mysql
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'database',
+    database: 'tarhely',
   })
   .promise();
